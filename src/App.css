@@ -1,0 +1,15 @@
+/* .column {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+} */
+/* .ui.grid {
+  background: #000;
+} */
+.ui.grid {
+  height: 100vh;
+  vertical-align: middle;
+}
+.column {
+  max-width: 450px;
+}

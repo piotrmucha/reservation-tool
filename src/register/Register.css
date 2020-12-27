@@ -1,0 +1,13 @@
+.ui.form {
+  max-width: 450px;
+  justify-content: center;
+}
+
+.error-register {
+  color: #bf1650;
+}
+
+.error-register::before {
+  display: inline;
+  content: "⚠ ";
+}
