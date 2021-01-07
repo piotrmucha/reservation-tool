@@ -1,14 +1,14 @@
 import React from "react";
 import "./Register.css";
-import { Button, Divider, Form, Grid, Segment } from "semantic-ui-react";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-
+import Alert from "@material-ui/lab/Alert";
 const RegisterForm = () => {
   const { register, handleSubmit, errors, watch } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
   const [userExists, setUserExists] = useState(false);
+  const [registerSuccess, setregisterSuccess] = useState(false);
 
   const notify = async (email) => {
     const response = await fetch(
@@ -21,7 +21,9 @@ const RegisterForm = () => {
       console.log("siema", error);
     });
     if (response) {
-      console.log("response stat", response);
+      if (response.status === 201) {
+        setregisterSuccess(true);
+      }
     }
   };
 
@@ -64,7 +66,7 @@ const RegisterForm = () => {
     <div class="ui middle aligned center aligned grid ">
       <div class="column">
         <h2 class="ui teal image header">
-          {/* <img src="assets/images/logo.png" class="image" /> */}
+          {/* <img src="assets/images/someimage.pgn" class="image" /> */}
           <div class="content">Formularz rejestracyjny</div>
         </h2>
         <form class="ui large form" onSubmit={handleSubmit(submit)}>
@@ -120,13 +122,19 @@ const RegisterForm = () => {
               <p class="error-register">{errors.password_repeat.message}</p>
             )}
             <button type="submit" class="ui fluid large teal submit button">
-              Zaloguj się
+              Zarejestruj się
             </button>
           </div>
 
           <div class="ui error message"></div>
         </form>
         {userExists && <p class="error-register">Użytkownik już istnieje</p>}
+        {registerSuccess && (
+          <Alert severity="success">
+            Poprawnie się zarejestrowałeś. Sprawdź email i kliknij w link żeby
+            potwierdzić założenie konta.
+          </Alert>
+        )}
       </div>
     </div>
   );

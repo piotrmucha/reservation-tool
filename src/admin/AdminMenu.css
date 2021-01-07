@@ -1,0 +1,10 @@
+.admin-menu {
+  position: fixed;
+  top: 50%;
+  left: 35%;
+}
+
+.exit {
+  margin-top: 10px;
+  margin-right: 10px;
+}

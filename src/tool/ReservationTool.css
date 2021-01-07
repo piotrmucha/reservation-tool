@@ -1,0 +1,21 @@
+.main-acc {
+  margin: 10px 0;
+  background: red;
+  border-radius: 3px;
+}
+.description {
+  font-size: 20px !important;
+}
+.full-items {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.exit {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.main {
+  margin-top: 50px;
+}
