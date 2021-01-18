@@ -1,10 +1,7 @@
 import React from "react";
-import UserProfile from "./../UserProfile";
 import DateTimePicker, { registerLocale } from "react-datepicker";
-import pl from "date-fns/locale/pl";
 import "react-datepicker/dist/react-datepicker.css";
 import Alert from "@material-ui/lab/Alert";
-registerLocale("pl", pl);
 class ReservationForm extends React.Component {
   state = {
     selectedTime: new Date(),
@@ -76,22 +73,21 @@ class ReservationForm extends React.Component {
     console.log("loading");
     return (
       <div>
-        <h1>Wypożycz zasób</h1>
+        <h1>Book resource</h1>
         <form onSubmit={this.handleSend}>
-          <label htmlFor="fname">Wybierz date do której wypożyczasz: </label>
+          <label htmlFor="fname">Select the date you are booking for: </label>
           <DateTimePicker
             selected={this.state.selectedTime}
             minDate={new Date()}
             onChange={this.validateTime}
-            placeholderText="Wybierz "
-            locale="pl"
+            placeholderText="Check "
             showTimeSelect
-            timeCaption="Godzina"
+            timeCaption="Hour"
             timeFormat="p"
             timeIntervals={10}
             dateFormat="MM/dd/yyyy h:mm"
           />
-          <label htmlFor="cars"> Czy wysłać powiadomienie mailowe? </label>
+          <label htmlFor="cars"> Choose if you want to receive a reminder  </label>
           <select
             id="remind"
             name="remindSelect"
@@ -99,22 +95,22 @@ class ReservationForm extends React.Component {
               this.setState({ remind: e.target.value });
             }}
           >
-            <option value="null">Nie wysyłaj</option>
-            <option value="5M">5 minut przed końcem</option>
-            <option value="15M">15 minut przed końcem</option>
-            <option value="1H">1 godzine przed końcem</option>
-            <option value="24H">24 godziny przed końcem</option>
+            <option value="null">Don't send</option>
+            <option value="5M">5 minutes before end</option>
+            <option value="15M">15 minutes before end</option>
+            <option value="1H">1 hour before end</option>
+            <option value="24H">24 hours before end</option>
           </select>
           {this.state.incorrectDate && (
             <p class="error-register">
-              Nie możesz wybrać godziny wcześniejszej niż obecna
+              You cannot select an hour earlier than the present time
             </p>
           )}
           {this.state.successSend && (
-            <Alert severity="success">Poprawnie dokonano rezerwacji</Alert>
+            <Alert severity="success">The reservation was made correctly</Alert>
           )}
           <br></br>
-          <input type="submit" value="Zarezweruj" />
+          <input type="submit" value="Book it" />
         </form>
       </div>
     );

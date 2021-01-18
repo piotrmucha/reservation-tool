@@ -20,7 +20,7 @@ export default function LockedList(props) {
   const notify = async () => {
     const response = await fetch(
       "http://localhost:8052/api/v1/reservation/resource?resourceName=" +
-        props.resourceName,
+      props.resourceName,
       {
         method: "GET",
       }
@@ -42,7 +42,7 @@ export default function LockedList(props) {
 
   return (
     <div>
-      <h1>Rezerwacje</h1>
+      <h1>Reservations</h1>
       <List className={classes.root}>
         {reservations.map((item, i) => {
           return (

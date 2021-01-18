@@ -19,10 +19,10 @@ export default function ErrorPage(props) {
     <Grid container justify="center" className="grid-class">
       <div className={classes.root}>
         <Alert severity="error" className="test">
-          <AlertTitle>Błąd</AlertTitle>
+          <AlertTitle>Error</AlertTitle>
           {props.message}:{" "}
           <strong>
-            <a href="/">Zaloguj się</a>
+            <a href="/">Log in</a>
           </strong>
         </Alert>
       </div>

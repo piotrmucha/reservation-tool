@@ -2,11 +2,10 @@ import React from "react";
 import "./ReservationTool.css";
 import ReactDOM from "react-dom";
 import SingleResource from "./SingleResource";
-import UserProfile from "./../UserProfile";
 import ErrorPage from "./ErrorPage";
-import { Image, Item } from "semantic-ui-react";
+import { Item } from "semantic-ui-react";
 import { Button } from "semantic-ui-react";
-import { withRouter } from "react-router-dom";
+
 import {
   AccordionWithHeader,
   AccordionNode,
@@ -35,7 +34,7 @@ class BodyTpl extends React.Component {
               </Item.Description>
               <br></br>
               <Button positive onClick={this.renderWholePage}>
-                Przejdź do zasobów z kategorii
+                Go to resources from category
               </Button>
             </Item.Content>
           </Item>
@@ -72,7 +71,7 @@ class ReservationTools extends React.Component {
           className="exit"
           onClick={this.logout}
         >
-          wyloguj
+          log out
         </Button>
         <AccordionWithHeader className="main">
           {this.state.categories.map((item, i) => {
@@ -98,10 +97,10 @@ class ReservationTools extends React.Component {
         </AccordionWithHeader>
       </div>
     ) : (
-      <div>
-        x<ErrorPage message="nie jesteś zalogowany"></ErrorPage>
-      </div>
-    );
+        <div>
+          x<ErrorPage message="You're not logged in"></ErrorPage>
+        </div>
+      );
   }
 }
 

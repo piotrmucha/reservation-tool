@@ -22,20 +22,20 @@ const AdminMenu = () => {
   return isAdmin ? (
     <div>
       <Button color="black" size="medium" className="exit" onClick={logout}>
-        wyloguj
+        log out
       </Button>
       <div className="admin-menu">
         <Button color="violet" size="massive" onClick={goCategory}>
-          Dodaj nową kategorie
+          Add a new category
         </Button>
         <Button color="violet" size="massive" onClick={goResource}>
-          Dodaj nowy zasób
+          Add a new resource
         </Button>
       </div>
     </div>
   ) : (
-    <ErrorPage message="nie masz uprawnień administratora"></ErrorPage>
-  );
+      <ErrorPage message="you do not have admin rights"></ErrorPage>
+    );
 };
 
 export default AdminMenu;

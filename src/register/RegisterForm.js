@@ -13,7 +13,7 @@ const RegisterForm = () => {
   const notify = async (email) => {
     const response = await fetch(
       "http://localhost:8050/api/v1/notification/userRegister?clientMail=" +
-        email,
+      email,
       {
         method: "POST",
       }
@@ -28,9 +28,8 @@ const RegisterForm = () => {
   };
 
   const submit = async (formData) => {
+    setUserExists(false);
     console.log(formData);
-    // setSubmitting(true);
-    // setServerErrors([]);
 
     const response = await fetch("http://localhost:8051/api/v1/user", {
       method: "POST",
@@ -52,22 +51,18 @@ const RegisterForm = () => {
     if (data === 201) {
       console.log("success, redirect to home page");
       notify(formData.email);
-      //setServerErrors(data.errors);
     } else if (data === 422) {
       console.log("already exists");
       setUserExists(true);
     } else {
       console.log("error");
     }
-
-    // setSubmitting(false);
   };
   return (
     <div class="ui middle aligned center aligned grid ">
       <div class="column">
         <h2 class="ui teal image header">
-          {/* <img src="assets/images/someimage.pgn" class="image" /> */}
-          <div class="content">Formularz rejestracyjny</div>
+          <div class="content">Registration form</div>
         </h2>
         <form class="ui large form" onSubmit={handleSubmit(submit)}>
           <div class="u">
@@ -77,9 +72,9 @@ const RegisterForm = () => {
                 <input
                   type="text"
                   name="email"
-                  placeholder="Adres email"
+                  placeholder="Email"
                   ref={register({
-                    required: "Musisz podać Email",
+                    required: "You must provide an Email",
                   })}
                 />
               </div>
@@ -93,9 +88,9 @@ const RegisterForm = () => {
                 <input
                   type="password"
                   name="password"
-                  placeholder="Hasło"
+                  placeholder="Password"
                   ref={register({
-                    required: "Musisz wprowadzić hasło",
+                    required: "You must enter a password",
                   })}
                 />
               </div>
@@ -109,11 +104,11 @@ const RegisterForm = () => {
                 <input
                   type="password"
                   name="password_repeat"
-                  placeholder="Powtórz hasło"
+                  placeholder="Repeat password                  "
                   ref={register({
-                    required: "Musisz powtórzyć hasło",
+                    required: "You must repeat the password",
                     validate: (value) =>
-                      value === password.current || "Hasła nie pasują",
+                      value === password.current || "Passwords do not match",
                   })}
                 />
               </div>
@@ -122,17 +117,16 @@ const RegisterForm = () => {
               <p class="error-register">{errors.password_repeat.message}</p>
             )}
             <button type="submit" class="ui fluid large teal submit button">
-              Zarejestruj się
+              Register
             </button>
           </div>
 
           <div class="ui error message"></div>
         </form>
-        {userExists && <p class="error-register">Użytkownik już istnieje</p>}
+        {userExists && <p class="error-register">User already exists</p>}
         {registerSuccess && (
           <Alert severity="success">
-            Poprawnie się zarejestrowałeś. Sprawdź email i kliknij w link żeby
-            potwierdzić założenie konta.
+            You have successfully registered. Check the email and click the link to confirm account creation.
           </Alert>
         )}
       </div>

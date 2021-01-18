@@ -109,24 +109,24 @@ class Resource extends Component {
         <Form className="category-form" onSubmit={this.handleSubmit}>
           <Form.Input
             fluid
-            label="Nazwa zasobu"
-            placeholder="Wprowadź nazwę zasobu"
+            label="Resource name"
+            placeholder="Enter a resource name"
             name="resourceName"
             value={resourceName}
             onChange={this.handleChange}
             width={5}
           />
           <Form.TextArea
-            label="Opis zasobu"
-            placeholder="Wprowadź opis zasobu"
+            label="Description of the resource"
+            placeholder="Enter a resource description"
             name="resourceDescription"
             value={resourceDescription}
             onChange={this.handleChange}
           />
           <Form.Input
             fluid
-            label="Obraz zasobu"
-            placeholder="Wprowadź adres obrazu do zasobu"
+            label="image of the resource"
+            placeholder="Enter the image address for the resource"
             name="resourceImage"
             value={resourceImage}
             onChange={this.handleChange}
@@ -134,8 +134,8 @@ class Resource extends Component {
           />
           <Form.Input
             fluid
-            label="Lokalizacja zasobu"
-            placeholder="Wprowadź lokalizacje"
+            label="Resource localization"
+            placeholder="Enter localization"
             name="localization"
             value={localization}
             onChange={this.handleChange}
@@ -144,9 +144,9 @@ class Resource extends Component {
 
           <Form.Select
             fluid
-            label="Kategoria"
+            label="Category"
             options={this.getCategories()}
-            placeholder="Wybierz kategorie"
+            placeholder="Choose category"
             name="resourceCategory"
             value={resourceCategory}
             onChange={this.handleChange}
@@ -154,23 +154,23 @@ class Resource extends Component {
           />
           <Form.Select
             fluid
-            label="Ile osób może współdzielić zasób"
+            label="How many people can share the resource "
             name="howManyPeopleCanShare"
             value={howManyPeopleCanShare}
             onChange={this.handleChange}
             options={options}
-            placeholder="ilość"
+            placeholder="amount"
             width={2}
           />
-          <Form.Button>Dodaj zasób</Form.Button>
+          <Form.Button>Add a resource</Form.Button>
         </Form>
         {this.state.successSend && (
-          <Alert severity="success">Poprawnie utworzono nowy zasób</Alert>
+          <Alert severity="success">New resource successfully created</Alert>
         )}
       </div>
     ) : (
-      <ErrorPage message="nie masz uprawnień administratora"></ErrorPage>
-    );
+        <ErrorPage message="you do not have admin rights"></ErrorPage>
+      );
   }
 }
 

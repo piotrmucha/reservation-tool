@@ -58,35 +58,35 @@ class Category extends Component {
       <Form className="category-form" onSubmit={this.handleSubmit}>
         <Form.Input
           fluid
-          label="Nazwa kategorii"
-          placeholder="Wprowadź nazwę kategorii"
+          label="Category name"
+          placeholder="Enter a name for the category"
           name="categoryName"
           value={categoryName}
           onChange={this.handleChange}
         />
         <Form.TextArea
-          label="Opis kategorii"
-          placeholder="Wprowadź opis kategorii"
+          label="Description of the category"
+          placeholder="Enter a description for the category"
           name="categoryDescription"
           value={categoryDescription}
           onChange={this.handleChange}
         />
         <Form.Input
           fluid
-          label="Obraz kategorii"
-          placeholder="Wprowadź adres obrazu do kategorii"
+          label="Category image"
+          placeholder="Enter the image address for the category"
           name="categoryImage"
           value={categoryImage}
           onChange={this.handleChange}
         />
-        <Form.Button>Dodaj kategorie</Form.Button>
+        <Form.Button>Add category</Form.Button>
         {this.state.successSend && (
-          <Alert severity="success">Poprawnie utworzono nową kategorie</Alert>
+          <Alert severity="success">New category was created correctly</Alert>
         )}
       </Form>
     ) : (
-      <ErrorPage message="nie masz uprawnień administratora"></ErrorPage>
-    );
+        <ErrorPage message="">you do not have admin rights</ErrorPage>
+      );
   }
 }
 

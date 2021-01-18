@@ -21,7 +21,6 @@ const Login = () => {
   });
 
   const handleClick = (prop) => {
-    console.log(prop);
     prop.preventDefault();
     history.push("/register");
   };
@@ -81,9 +80,9 @@ const Login = () => {
   const verifyPassword = async (email, password) => {
     const response = await fetch(
       "http://localhost:8051/api/v1/user/password?mail=" +
-        email +
-        "&password=" +
-        password,
+      email +
+      "&password=" +
+      password,
       {
         method: "GET",
       }
@@ -99,7 +98,6 @@ const Login = () => {
     if (data === 200) {
       checkIfApproved(email);
       console.log("success login");
-      //setServerErrors(data.errors);
     } else if (data === 403) {
       console.log("password incorrect");
       setpasswordIncorrect(true);
@@ -140,16 +138,13 @@ const Login = () => {
       console.log("error");
       setserverError(true);
     }
-
-    // setSubmitting(false);
   };
 
   return (
     <div class="ui middle aligned center aligned grid ">
       <div class="column">
         <h2 class="ui teal image header">
-          {/* <img src="assets/images/logo.png" class="image" /> */}
-          <div class="content">Zaloguj się</div>
+          <div class="content">Log in to the application</div>
         </h2>
         <form class="ui large form" onSubmit={handleSubmit(submit)}>
           <div class="u">
@@ -159,9 +154,9 @@ const Login = () => {
                 <input
                   type="text"
                   name="email"
-                  placeholder="Adres email"
+                  placeholder="Email"
                   ref={register({
-                    required: "Musisz podać Email",
+                    required: "You must provide an Email",
                   })}
                 />
               </div>
@@ -171,7 +166,7 @@ const Login = () => {
             )}
             {userNotExists && (
               <p class="error-register">
-                Użytkownik o podanym adresie email nie istnieje
+                The user with the given email address does not exist
               </p>
             )}
             <div class="field">
@@ -180,15 +175,15 @@ const Login = () => {
                 <input
                   type="password"
                   name="password"
-                  placeholder="Hasło"
+                  placeholder="Password"
                   ref={register({
-                    required: "Musisz wprowadzić hasło",
+                    required: "You must enter a password",
                   })}
                 />
               </div>
             </div>
             {passwordIncorrect && (
-              <p class="error-register">Niepoprawne hasło</p>
+              <p class="error-register">Incorrect password</p>
             )}
             {errors.password && (
               <p class="error-register">{errors.password.message}</p>
@@ -202,17 +197,17 @@ const Login = () => {
         </form>
         {userNotConfirmed && (
           <p class="error-register">
-            Użytkownik nie potwierdził jeszcze konta.
+            The user has not yet confirmed the account.
           </p>
         )}
         {serverError && (
-          <p class="error-register">Błąd połączenia z serwerem</p>
+          <p class="error-register">Server connection error</p>
         )}
         <div class="ui message">
-          Nie masz jeszcze konta?
+          You dont have an account yet?
           <br></br>
           <a href="#" onClick={handleClick}>
-            Zarejestruj się
+            Register
           </a>
         </div>
       </div>
